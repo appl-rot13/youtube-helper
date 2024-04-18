@@ -1,13 +1,13 @@
 {
   "manifest_version": 3,
-  "name": "YouTube Live Chat Closer",
-  "description": "Chrome Extension for Close YouTube Live Chat",
+  "name": "YouTube Helper",
+  "description": "Chrome Extension for YouTube",
   "version": "1.0.0",
   "content_scripts": [{
     "run_at": "document_end",
     "matches": ["https://www.youtube.com/live_chat*"],
     "all_frames": true,
-    "js": ["content.js"]
+    "js": ["content-iframe.js"]
   }],
   "background": {
     "service_worker": "background.js"
