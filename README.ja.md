@@ -2,7 +2,12 @@
 
 # YouTube Helper
 
-YouTube用のChrome拡張機能。
+YouTubeを快適に利用するためのChrome拡張機能。
+
+## 機能
+
+- ライブチャット欄を自動的に閉じる。
+- 動画の一時停止を自動的に再開する。
 
 ## 使い方
 

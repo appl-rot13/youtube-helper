@@ -2,7 +2,12 @@
 
 # YouTube Helper
 
-Chrome Extension for YouTube.
+Chrome Extension for comfortable use of YouTube.
+
+## Features
+
+- Automatically close live chat.
+- Automatically resume paused video.
 
 ## Usage
 
