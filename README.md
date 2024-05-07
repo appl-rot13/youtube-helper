@@ -8,6 +8,7 @@ Chrome Extension for comfortable use of YouTube.
 
 - Automatically close live chat.
 - Automatically resume paused video.
+- Display Shorts as normal videos.
 
 ## Usage
 

@@ -1,12 +1,17 @@
 
-.toggle_button {
+ul {
+  padding-left: 0;
+  list-style: none;
+}
+
+.toggle-button {
   display: flex;
   align-items: center;
   margin: 10px;
   cursor: pointer;
 }
 
-.toggle_button div {
+.toggle-button div {
   position: relative;
   width: 50px;
   height: 25px;
@@ -15,11 +20,11 @@
   transition: background-color .2s;
 }
 
-.toggle_button:has(:checked) div {
+.toggle-button:has(:checked) div {
   background-color: #4bd865;
 }
 
-.toggle_button div::after {
+.toggle-button div::after {
   position: absolute;
   top: 0;
   left: 0;
@@ -32,15 +37,15 @@
   transition: left .2s;
 }
 
-.toggle_button:has(:checked) div::after {
+.toggle-button:has(:checked) div::after {
   left: 25px;
 }
 
-.toggle_button input {
+.toggle-button input {
   display: none;
 }
 
-.toggle_button span {
+.toggle-button span {
   margin-left: 10px;
   white-space: nowrap;
 }
