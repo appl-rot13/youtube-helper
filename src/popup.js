@@ -1,10 +1,10 @@
 (async () => {
   const input = document.querySelector("#toggle_input");
-  input.checked = await chrome.runtime.sendMessage({ message: "get-enabled" });
+  input.checked = await chrome.runtime.sendMessage({ message: "get-enable-close-chat" });
 
   input.addEventListener("click", () => {
     const state = input.checked;
-    chrome.runtime.sendMessage({ message: "set-enabled", value: state });
+    chrome.runtime.sendMessage({ message: "set-enable-close-chat", value: state });
 
     if (!state) {
       return;

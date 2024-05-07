@@ -1,15 +1,15 @@
 (() => {
-  const isEnabled = "isEnabled";
+  const enableCloseChat = "enable-close-chat";
 
   chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     switch (request.message) {
-      case "set-enabled":
-        chrome.storage.local.set({ [isEnabled]: request.value });
+      case "set-enable-close-chat":
+        chrome.storage.local.set({ [enableCloseChat]: request.value });
         break;
 
-      case "get-enabled":
-        chrome.storage.local.get([isEnabled]).then(ret => {
-          sendResponse((isEnabled in ret) ? ret[isEnabled] : true);
+      case "get-enable-close-chat":
+        chrome.storage.local.get([enableCloseChat]).then(ret => {
+          sendResponse((enableCloseChat in ret) ? ret[enableCloseChat] : true);
         });
         return true;
     }
