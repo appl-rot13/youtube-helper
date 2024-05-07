@@ -1,12 +1,12 @@
 (async () => {
   const input = document.querySelector("#toggle_input");
-  input.checked = await chrome.runtime.sendMessage("get-enabled");
+  input.checked = await chrome.runtime.sendMessage({ message: "get-enabled" });
 
   input.addEventListener("click", () => {
-    const state = input.checked ? "enable" : "disable";
-    chrome.runtime.sendMessage("set-to-" + state);
+    const state = input.checked;
+    chrome.runtime.sendMessage({ message: "set-enabled", value: state });
 
-    if (!input.checked) {
+    if (!state) {
       return;
     }
 

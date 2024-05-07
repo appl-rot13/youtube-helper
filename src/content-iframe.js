@@ -1,6 +1,6 @@
 (() => {
   const closeChat = async () => {
-    const enabled = await chrome.runtime.sendMessage("get-enabled");
+    const enabled = await chrome.runtime.sendMessage({ message: "get-enabled" });
     if (!enabled) {
       return;
     }

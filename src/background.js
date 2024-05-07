@@ -1,14 +1,10 @@
 (() => {
   const isEnabled = "isEnabled";
 
-  chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-    switch (message) {
-      case "set-to-enable":
-        chrome.storage.local.set({ [isEnabled]: true });
-        break;
-
-      case "set-to-disable":
-        chrome.storage.local.set({ [isEnabled]: false });
+  chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
+    switch (request.message) {
+      case "set-enabled":
+        chrome.storage.local.set({ [isEnabled]: request.value });
         break;
 
       case "get-enabled":
