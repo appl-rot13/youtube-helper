@@ -48,4 +48,28 @@
       dialogAdditionObserver.observe(container, { childList: true });
     }, 1000);
   });
+
+  const showChat = async () => {
+    const enabled = await chrome.runtime.sendMessage({ message: "get-enable-close-chat" });
+    if (enabled) {
+      return;
+    }
+
+    const showButton = document.querySelector("#show-hide-button button");
+    if (!showButton) {
+      return;
+    }
+
+    const event = document.createEvent("MouseEvents");
+    event.initEvent("click", true, true);
+    showButton.dispatchEvent(event);
+  }
+
+  chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+    switch (message) {
+      case "show-chat":
+        showChat();
+        break;
+    }
+  });
 })();

@@ -12,25 +12,23 @@
       const state = input.checked;
       chrome.runtime.sendMessage({ message: "set-" + option, value: state });
 
-      if (option != "enable-close-chat") {
-        return;
+      switch (option) {
+        case "enable-close-chat":
+          if (state) {
+            // Close chat for all tabs
+            chrome.tabs.query({}, tabs => {
+              tabs.forEach(tab => {
+                chrome.tabs.sendMessage(tab.id, "close-chat").catch(error => {});
+              });
+            });
+          } else {
+            // Show chat only for active tab
+            chrome.tabs.query({ active: true, currentWindow: true }, tabs => {
+              chrome.tabs.sendMessage(tabs[0].id, "show-chat").catch(error => {});
+            });
+          }
+          break;
       }
-
-      if (!state) {
-        return;
-      }
-
-      // Close chat only for active tab
-      // chrome.tabs.query({ active: true, currentWindow: true }, tabs => {
-      //   chrome.tabs.sendMessage(tabs[0].id, "close-chat").catch(error => {});
-      // });
-
-      // Close chat for all tabs
-      chrome.tabs.query({}, tabs => {
-        tabs.forEach(tab => {
-          chrome.tabs.sendMessage(tab.id, "close-chat").catch(error => {});
-        });
-      });
     });
   });
 })();
