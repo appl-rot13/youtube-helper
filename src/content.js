@@ -49,26 +49,31 @@
     }, 1000);
   });
 
-  const showChat = async () => {
-    const enabled = await chrome.runtime.sendMessage({ message: "get-enable-close-chat" });
-    if (enabled) {
+  const showHideChat = async () => {
+    const showHideDiv = document.querySelector("#show-hide-button");
+    if (!showHideDiv) {
       return;
     }
 
-    const showButton = document.querySelector("#show-hide-button button");
-    if (!showButton) {
+    const enabled = await chrome.runtime.sendMessage({ message: "get-enable-close-chat" });
+    if (enabled && !showHideDiv.hidden || !enabled && showHideDiv.hidden) {
+      return;
+    }
+
+    const showHideButton = showHideDiv.querySelector("button");
+    if (!showHideButton) {
       return;
     }
 
     const event = document.createEvent("MouseEvents");
     event.initEvent("click", true, true);
-    showButton.dispatchEvent(event);
+    showHideButton.dispatchEvent(event);
   }
 
   chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     switch (message) {
-      case "show-chat":
-        showChat();
+      case "show-hide-chat":
+        showHideChat();
         break;
     }
   });

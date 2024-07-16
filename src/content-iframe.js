@@ -15,13 +15,5 @@
     closeButton.dispatchEvent(event);
   }
 
-  chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-    switch (message) {
-      case "close-chat":
-        closeChat();
-        break;
-    }
-  });
-
   closeChat();
 })();
